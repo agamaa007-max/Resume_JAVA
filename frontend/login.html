@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <div class="logo-badge">BH</div>
+                <h1>BlindHire</h1>
+                <p>Blind Resume Screening & ATS</p>
+            </div>
+
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label" for="login-email">Recruiter Email Address</label>
+                    <input type="email" id="login-email" class="form-input" placeholder="recruiter@blindhire.com" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="auth-switch">
+                Don't have an account? <a href="/register.html">Register here</a>
+            </div>
+
+            <div class="demo-credentials-box">
+                <strong>Demo Recruiter Credentials:</strong><br>
+                Email: <code>recruiter@blindhire.com</code><br>
+                Password: <code>Password@123</code>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+</body>
+</html>

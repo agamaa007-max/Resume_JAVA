@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-layout">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Recruitment Operations Dashboard</h1>
+                    <p>Live metrics and anonymous resume evaluation statistics</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/upload-resume.html" class="btn btn-sm btn-primary">+ Upload Resume</a>
+                    <a href="/create-job.html" class="btn btn-sm btn-secondary">+ Post Job</a>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="page-content">
+                <!-- Statistics Metric Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">💼</div>
+                        <div class="stat-info">
+                            <div id="stat-total-jobs" class="stat-value">...</div>
+                            <div class="stat-label">Total Job Openings</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">👥</div>
+                        <div class="stat-info">
+                            <div id="stat-total-candidates" class="stat-value">...</div>
+                            <div class="stat-label">Evaluated Candidates</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📄</div>
+                        <div class="stat-info">
+                            <div id="stat-total-resumes" class="stat-value">...</div>
+                            <div class="stat-label">Resumes Processed</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon amber">🎯</div>
+                        <div class="stat-info">
+                            <div id="stat-avg-score" class="stat-value">...</div>
+                            <div class="stat-label">Average Match Score</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="quick-actions-bar">
+                    <a href="/upload-resume.html" class="btn btn-primary">
+                        <span>📤 Upload & Screen New Resume</span>
+                    </a>
+                    <a href="/candidates.html" class="btn btn-secondary">
+                        <span>🔍 Filter & Shortlist Candidates</span>
+                    </a>
+                    <a href="/jobs.html" class="btn btn-secondary">
+                        <span>📋 View Active Vacancies</span>
+                    </a>
+                    <a href="/audit-logs.html" class="btn btn-outline">
+                        <span>🛡️ Review Privacy Audit Logs</span>
+                    </a>
+                </div>
+
+                <!-- Two-Column Split Table Grid -->
+                <div class="dashboard-split-grid">
+                    <!-- Recent Jobs Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title">Recent Job Postings</h2>
+                                <p class="card-subtitle">Active roles accepting applicant resumes</p>
+                            </div>
+                            <a href="/jobs.html" class="btn btn-sm btn-outline">All Jobs →</a>
+                        </div>
+                        <div class="table-container" style="border: none;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <th>Status</th>
+                                        <th>Min Exp</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-jobs-tbody">
+                                    <tr><td colspan="4" style="text-align: center; padding: 20px;">Loading live database jobs...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recent Candidates Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title">Recent Screenings</h2>
+                                <p class="card-subtitle">Blind candidate evaluation scores</p>
+                            </div>
+                            <a href="/candidates.html" class="btn btn-sm btn-outline">All Candidates →</a>
+                        </div>
+                        <div class="table-container" style="border: none;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Candidate ID</th>
+                                        <th>Degree</th>
+                                        <th>Exp</th>
+                                        <th>Match</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-candidates-tbody">
+                                    <tr><td colspan="5" style="text-align: center; padding: 20px;">Loading recent candidates...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

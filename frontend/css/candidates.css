@@ -1,0 +1,151 @@
+/* ==========================================================
+   BlindHire - Candidate Screening & Details Styles
+   ========================================================== */
+
+.filter-bar {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 18px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.candidate-hero-card {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 30px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.candidate-hero-info h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.candidate-hero-info p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+.score-circle-display {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 16px 28px;
+}
+
+.score-circle-display .number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #38bdf8;
+    line-height: 1;
+}
+
+.score-circle-display .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #cbd5e1;
+    margin-top: 6px;
+}
+
+.score-breakdown-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.breakdown-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+}
+
+.breakdown-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.breakdown-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.explanation-box {
+    background-color: #f8fafc;
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    white-space: pre-line;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.revealed-identity-box {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.revealed-identity-box h3 {
+    color: #065f46;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.identity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.identity-item label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #047857;
+}
+
+.identity-item value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    display: block;
+    margin-top: 2px;
+}

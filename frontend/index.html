@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlindHire - Blind Resume Screening & Applicant Tracking System</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            max-width: 800px;
+            margin: 0 auto 16px;
+            line-height: 1.15;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: -40px auto 60px;
+            padding: 0 24px;
+        }
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            text-align: left;
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background-color: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Landing Navigation Header -->
+    <header style="background-color: #0f172a; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="logo-badge">BH</div>
+            <div>
+                <h2 style="color: #ffffff; font-size: 1.2rem; font-weight: 800;">BlindHire</h2>
+                <span style="color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;">Applicant Tracking System</span>
+            </div>
+        </div>
+        <div>
+            <a href="/login.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: #ffffff;">Sign In</a>
+            <a href="/register.html" class="btn btn-primary" style="margin-left: 10px;">Recruiter Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">Screen Resumes for Skills, Not Demographics</h1>
+        <p class="hero-subtitle">
+            BlindHire initially hides personally identifiable information so engineering teams and recruiters can evaluate applicants purely on job-related qualifications.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="/dashboard.html" class="btn btn-lg btn-primary" style="background-color: #2563eb;">Open Recruiter Dashboard</a>
+            <a href="/login.html" class="btn btn-lg btn-secondary">Sign In with Demo Account</a>
+        </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3 style="font-size: 1.15rem; color: var(--navy-dark); margin-bottom: 8px;">Blind Screening Pipeline</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                Candidate names, emails, contact numbers, and photos are quarantined from normal screening views. Evaluators see synthetic anonymous IDs (e.g. CAND-1001).
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h3 style="font-size: 1.15rem; color: var(--navy-dark); margin-bottom: 8px;">Explainable Match Algorithm</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                Deterministic multi-factor score: Skills (50%), Experience (25%), Education (15%), and Projects (10%). Transparent breakdown with matched and missing skills.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 style="font-size: 1.15rem; color: var(--navy-dark); margin-bottom: 8px;">Audited Identity Revelation</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                Recruiters reveal candidate contact details only after objective shortlisting. Every reveal requires mandatory justification and is logged permanently.
+            </p>
+        </div>
+    </div>
+
+    <!-- Academic Notice Footer -->
+    <footer style="text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); background-color: #ffffff;">
+        <p><strong>BlindHire</strong> — Academic Software Development Project built using Core Java, JDBC, MySQL, HTML5, CSS3 & Vanilla JavaScript.</p>
+        <p style="margin-top: 4px;">Designed for college project presentation and technical viva examination.</p>
+    </footer>
+
+    <script src="/js/api.js"></script>
+    <script>
+        // If logged in, redirect directly to dashboard
+        if (api.getToken()) {
+            window.location.href = "/dashboard.html";
+        }
+    </script>
+</body>
+</html>

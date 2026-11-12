@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Screening - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/candidates.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item active">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Blind Candidate Screening</h1>
+                    <p>Evaluate applicants anonymously based strictly on verified qualifications</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/upload-resume.html" class="btn btn-primary">+ Screen New Resume</a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <!-- Comprehensive Multi-Filter Bar -->
+                <div class="filter-bar">
+                    <div class="filter-item">
+                        <label class="form-label" style="font-size: 0.775rem;">Filter by Vacancy</label>
+                        <select id="filter-job-select" class="form-select">
+                            <option value="">All Job Postings</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="form-label" style="font-size: 0.775rem;">
+                            Min Match Score: <strong id="min-score-val-label" style="color: var(--primary);">0%</strong>
+                        </label>
+                        <input type="range" id="filter-min-score" min="0" max="100" value="0" style="width: 100%; cursor: pointer;">
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="form-label" style="font-size: 0.775rem;">Required Skill Filter</label>
+                        <input type="text" id="filter-skill-input" class="form-input" placeholder="e.g. Java, SQL...">
+                    </div>
+
+                    <div class="filter-item">
+                        <label class="form-label" style="font-size: 0.775rem;">Search Candidate ID</label>
+                        <input type="text" id="filter-search-input" class="form-input" placeholder="e.g. CAND-1001">
+                    </div>
+
+                    <div style="display: flex; align-items: flex-end; padding-top: 18px;">
+                        <button id="btn-reset-filters" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Table Header Controls -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                    <div id="candidate-count-label" style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary);">
+                        Loading candidates...
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">
+                        🔒 Demographics hidden in accordance with blind screening guidelines
+                    </div>
+                </div>
+
+                <!-- Candidates Table Card -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Candidate ID</th>
+                                <th>Extracted Skills</th>
+                                <th>Education</th>
+                                <th>Experience</th>
+                                <th>Match Score</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="candidates-tbody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                    Connecting to database...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/candidates.js"></script>
+</body>
+</html>

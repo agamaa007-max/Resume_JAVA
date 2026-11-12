@@ -1,0 +1,91 @@
+/* ==========================================================
+   BlindHire - Jobs Management Styles
+   ========================================================== */
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+.job-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.job-card:hover {
+    border-color: #cbd5e1;
+    box-shadow: var(--shadow-md);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.job-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.job-meta-row {
+    display: flex;
+    gap: 16px;
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.job-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.job-skills-section {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.skill-tag-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: #ffffff;
+    min-height: 48px;
+}
+
+.skill-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.825rem;
+    font-weight: 600;
+}
+
+.skill-tag-remove {
+    cursor: pointer;
+    font-weight: 800;
+}

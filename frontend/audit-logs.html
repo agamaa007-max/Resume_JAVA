@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item active">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Security & Compliance Audit Trail</h1>
+                    <p>Tamper-evident logs of identity revelations and hiring actions</p>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <div class="card" style="padding: 18px 24px; margin-bottom: 24px; background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <span style="font-size: 1.5rem;">🛡️</span>
+                        <div>
+                            <strong style="color: #166534; font-size: 0.95rem;">Immutable Compliance Trail</strong>
+                            <p style="font-size: 0.85rem; color: #15803d; margin-top: 2px;">
+                                Every candidate identity reveal, job creation, and screening event is recorded with the authenticated recruiter's ID and mandatory operational justification.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Recruiter</th>
+                                <th>Target Candidate</th>
+                                <th>Description / Justification</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="audit-logs-tbody">
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                    Loading audit logs...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/audit-logs.js"></script>
+</body>
+</html>

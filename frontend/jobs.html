@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Vacancies - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/jobs.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item active">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Job Openings & Requirements</h1>
+                    <p>Manage job descriptions and target skill taxonomies</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/create-job.html" class="btn btn-primary">+ Post New Job</a>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <!-- Search and Controls Bar -->
+                <div class="card" style="padding: 16px 20px; margin-bottom: 24px; display: flex; gap: 16px; align-items: center;">
+                    <div style="flex: 1;">
+                        <input type="text" id="job-search-input" class="form-input" placeholder="🔍 Search jobs by title, keyword or description...">
+                    </div>
+                </div>
+
+                <!-- Jobs Grid Container -->
+                <div id="jobs-grid-container" class="jobs-grid">
+                    <div class="card card-body" style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px;">
+                        Loading jobs from MySQL database...
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# BlindHire Application Configuration
+
+# MySQL Database Configuration
+db.host=localhost
+db.port=3306
+db.name=blindhire
+db.user=root
+db.password=
+
+# HTTP Server Configuration
+server.port=8080
+
+# Uploads Configuration
+upload.dir=uploads/resumes

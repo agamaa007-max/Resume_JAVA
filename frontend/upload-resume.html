@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/candidates.css">
+    <style>
+        .dropzone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: #f8fafc;
+            padding: 48px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dropzone:hover {
+            border-color: var(--primary);
+            background-color: #f0f7ff;
+        }
+        .dropzone-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item active">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Upload & Screen Resume</h1>
+                    <p>Automated text extraction, skill normalization, and blind candidate evaluation</p>
+                </div>
+            </header>
+
+            <main class="page-content" style="max-width: 900px;">
+                <!-- Upload Form Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Resume Document Ingestion</h2>
+                    </div>
+
+                    <form id="resume-upload-form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label" for="upload-job-select">Target Job Opening *</label>
+                                <select id="upload-job-select" class="form-select" required>
+                                    <option value="">Loading job openings...</option>
+                                </select>
+                                <span class="form-hint">Candidate qualifications will be evaluated against this job's criteria</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Resume Document File *</label>
+                                <input type="file" id="resume-file-input" accept=".pdf,.docx,.txt" style="display: none;" required>
+
+                                <div id="file-dropzone" class="dropzone">
+                                    <div class="dropzone-icon">📁</div>
+                                    <h3 style="font-size: 1.1rem; color: var(--navy-dark); margin-bottom: 6px;">Choose a file or drag & drop it here</h3>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                                        Supports <strong>PDF</strong> (Apache PDFBox) and <strong>DOCX</strong> (Apache POI). Max 10MB.
+                                    </p>
+                                    <div id="file-selected-label" style="display: none; margin-top: 14px; font-weight: 700; color: var(--primary);"></div>
+                                </div>
+                            </div>
+
+                            <!-- Upload Processing Indicator -->
+                            <div id="upload-progress-box" style="display: none; text-align: center; padding: 20px;">
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 8px;">
+                                    ⚙️ Processing Resume...
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">
+                                    Extracting text • Normalizing skills • Generating anonymous ID • Running scoring model
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                                Upload, Extract & Evaluate Candidate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Dynamic Screening Result Display -->
+                <div id="screening-result-box" style="display: none;"></div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/upload.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post New Job - BlindHire</title>
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/jobs.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-badge">BH</div>
+                <div class="brand-info">
+                    <h2>BlindHire</h2>
+                    <span>Applicant Tracking</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Overview</div>
+                <a href="/dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+                <div class="nav-section-title">Hiring Pipeline</div>
+                <a href="/jobs.html" class="nav-item">
+                    <span class="nav-icon">💼</span>
+                    <span class="nav-text">Job Vacancies</span>
+                </a>
+                <a href="/create-job.html" class="nav-item active">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">Create Job</span>
+                </a>
+                <a href="/upload-resume.html" class="nav-item">
+                    <span class="nav-icon">📄</span>
+                    <span class="nav-text">Upload Resume</span>
+                </a>
+                <a href="/candidates.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Candidates</span>
+                </a>
+
+                <div class="nav-section-title">Security & Compliance</div>
+                <a href="/audit-logs.html" class="nav-item">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">Audit Trail</span>
+                </a>
+                <a href="/profile.html" class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Recruiter Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile-widget">
+                    <div id="sidebar-user-avatar" class="user-avatar">RH</div>
+                    <div class="user-meta">
+                        <div id="sidebar-user-name" class="user-name">Recruiter</div>
+                        <div class="user-role">Recruitment Lead</div>
+                    </div>
+                    <button onclick="api.logout()" class="btn btn-sm btn-secondary" title="Sign Out" style="background: rgba(255,255,255,0.1); color: #ffffff; border: none;">
+                        🚪
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <header class="top-header">
+                <div class="header-title-area">
+                    <h1>Create New Job Posting</h1>
+                    <p>Define role description, skill criteria, and experience qualifications</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/jobs.html" class="btn btn-secondary">← Back to Jobs</a>
+                </div>
+            </header>
+
+            <main class="page-content" style="max-width: 860px;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Job Vacancy Specification</h2>
+                    </div>
+
+                    <form id="create-job-form">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label" for="job-title">Job Title *</label>
+                                <input type="text" id="job-title" class="form-input" placeholder="e.g. Senior Java Backend Developer" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="job-description">Role Description *</label>
+                                <textarea id="job-description" class="form-textarea" placeholder="Detail the core duties, team environment, and day-to-day responsibilities..." rows="5" required></textarea>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div class="form-group">
+                                    <label class="form-label" for="job-experience">Minimum Experience (Years) *</label>
+                                    <input type="number" id="job-experience" class="form-input" min="0" max="25" value="1" required>
+                                    <span class="form-hint">Enter 0 for fresher/entry-level openings</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="job-education">Minimum Education *</label>
+                                    <input type="text" id="job-education" class="form-input" placeholder="e.g. B.Tech / B.E / MCA" value="B.Tech or equivalent relevant qualification" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="job-required-skills">Required Skills (Essential) *</label>
+                                <input type="text" id="job-required-skills" class="form-input" placeholder="e.g. Java, SQL, Spring Boot, Git" required>
+                                <span class="form-hint">Separate skills with commas. Evaluated with 75% weight in the skills factor.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="job-preferred-skills">Preferred Skills (Bonus / Good to Have)</label>
+                                <input type="text" id="job-preferred-skills" class="form-input" placeholder="e.g. Docker, AWS, Kubernetes, Microservices">
+                                <span class="form-hint">Separate skills with commas. Evaluated with 25% weight in the skills factor.</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="/jobs.html" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Publish Job Posting</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/jobs.js"></script>
+</body>
+</html>
